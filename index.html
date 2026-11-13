@@ -1,0 +1,52 @@
+<body style="background-color:black;">
+
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    body{
+      cursor: url("cursor.PNG"), auto;
+    }
+
+<video autoplay muted loop playsinline width="500" height="500">
+  <source src="/spinning-cat.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</body>
+
+<a href="/android-chrome-512x512.png" download="android-chrome-512x512.png">spinning_cat.png</a>
+<a href="/flying-cat.gif" download="flying-cat.gif">spinning_cat.gif</a>
+<a href="/flying-cat.mp4" download="flying-cat.mp4">spinning_cat.mp4</a>
+
+function openWindowFirst(){
+    windowCounter++;
+    window1 = window.open("child.html", "_blank","width=440,height=518,left=689,top=439,toolbar=0,status=0,");
+    var popupTick = setInterval(function() {
+        if (window1.closed) {
+            clearInterval(popupTick);
+            console.log('window closed!');
+            windowCounter++;
+            setTimeout(secondWindow, 1000)
+        }
+        //if (!window1.closed) {console.log('child.html_closed = true = DIE')}
+    }, 1000);
+}
+
+function openWindow(){
+    //windowCounter++;
+    window1 = window.open("child.html", "_blank","width=440,height=518,left=689,top=439,toolbar=0,status=0,");
+    var popupTick = setInterval(function() {
+        if (window1.closed) {
+            console.log('window closed!');
+            //windowCounter++;
+            window1 = window.open("child.html","_blank","width=440,height=518,left=689,top=439,toolbar=0,status=0,");
+        }
+        if (!window1.closed) {
+            //console.log('child.html_closed = true = DIE')
+        }
+    }, 1000);
+}
+
+if(mobileCheck() == false){
+	window1 = window.open("child.html","Ratting","width=440,height=518,left=689,top=439,toolbar=0,status=0,");
+}
